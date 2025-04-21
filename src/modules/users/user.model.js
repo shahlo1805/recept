@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: mongoose.SchemaTypes.String,
-      enum: ["admin"],
+      enum: ["admin", "super_admin"],
       required: false,
     },
     password: {
@@ -22,6 +22,8 @@ const userSchema = mongoose.Schema(
     email: {
       type: mongoose.SchemaTypes.String,
       required: true,
+      unique: true,
+      match: /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim,
     },
     bio: {
       type: mongoose.SchemaTypes.String,

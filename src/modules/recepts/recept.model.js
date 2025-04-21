@@ -7,12 +7,12 @@ const receptSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    image: {
-      type: String,
+    images: {
+      type: mongoose.SchemaTypes.Array,
       required: true,
     },
-    video: {
-      type: String,
+    videos: {
+      type: mongoose.SchemaTypes.Array,
       required: false,
     },
     description: {
@@ -24,24 +24,24 @@ const receptSchema = new mongoose.Schema(
       required: true,
     },
     ingredients: {
-      type: [String],
+      type: String,
       required: true,
     },
-    categoryId: {
+    category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
       required: true,
     },
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User", // User modeliga bog‘lanadi
       required: true,
     },
   },
   {
-    collation: "recepts",
+    collection: "recepts",
     timestamps: true,
-    versionKey: false
+    versionKey: false,
   }
 );
 

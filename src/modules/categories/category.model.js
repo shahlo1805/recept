@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 const categorySchema = new mongoose.Schema(
   {
     name: {
-      type: String,
+      type: mongoose.SchemaTypes.String,
       required: true,
       unique: true,
     },
   },
   {
-    collation: "Category",
+    collections: "categories",
     timestamps: true,
-    versionKey: false
+    versionKey: false,
   }
 );
 

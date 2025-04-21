@@ -1,10 +1,10 @@
 import { isValidObjectId } from "mongoose";
 import categoryModel from "./category.model.js";
-// import { BaseException } from "../exception/base.exception.js";
+import { BaseException } from "../../exception/base.exception.js";
 
 const getAllCategories = async (req, res, next) => {
   try {
-    const categories = await categoryModel.find().populate("foods");
+    const categories = await categoryModel.find()
 
     res.send({
       message: "success",

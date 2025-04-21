@@ -3,24 +3,23 @@ import userController from "./user.controller.js";
 import { authMiddleware } from "../../middleware/auth.middleware.js";
 import { rolesMiddleware } from "../../middleware/roles.middleware.js";
 import { upload } from "../../config/multer.config.js";
+import { updateProfileSchema } from "./user.schema.js";
+import { ValidationMiddleware } from "../../middleware/validation.middleware.js";
 
-const authrouter = Router();
-authrouter
-  .post("/register", userController.register)
-  .post("/login", userController.login)
-  .post("/forgot-password", authMiddleware, userController.forgotPassword)
-  .post("/reset-password", authMiddleware, userController.resetPassword)
+const userRoutes = Router();
+userRoutes
   .get(
-    "/users",
+    "/",
     authMiddleware,
-    rolesMiddleware("admin"),
+    rolesMiddleware("admin", "super_admin"),
     userController.getAllUsers
   )
   .put(
     "/profile",
     authMiddleware,
-    upload.single("profile"),
+    upload.single("avatar"),
+    ValidationMiddleware(updateProfileSchema),
     userController.updateProfile
   );
 
-export default authrouter;
+export default userRoutes;
