@@ -18,8 +18,8 @@ Foydalanuvchilar categories boyicha taomlarni, ularning retseptlari, kerakli mas
 
 # Rollar:
 
-- users;
--
+- super_admin;
+- admin;
 
 # Nofunksional talablar:
 

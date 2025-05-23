@@ -24,13 +24,13 @@ export const authMiddleware = (req, res, next) => {
       return res.status(401).json({
         message: "Invalid token",
       });
-    }
+    };
 
     if (!decodedtoken.user_id) {
       return res.status(401).json({
         message: "Invalid user",
       });
-    }
+    };
 
     req.role = decodedtoken.role;
     req.user_id = decodedtoken.user_id;
